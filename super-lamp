@@ -1,0 +1,17 @@
+    private mutating func onTranslate(_ gestureState: GestureType.GestureState<CGPoint>,
+                                      in state: AppState) -> AppState {
+        
+        var newState = state
+        switch state.editMode {
+        case .preview:
+            newState.collage = elementsTransformer.translate(
+                gestureState,
+                in: state.collage
+            )
+guard let shapeIndex = collage.shapes.firstIndex(where: {
+            $0.id == id
+        }) else {
+            return collage
+        }
+        
+        var newCollage = collage
